@@ -1,0 +1,51 @@
+{
+    "name": "vagebnd/envato-themecheck-cli",
+    "type": "library",
+    "repositories": [
+        {
+            "type":"package",
+            "package": {
+                "name": "envato/envato-theme-check",
+                "version":"master",
+                "source": {
+                    "url": "https://github.com/envato/envato-theme-check",
+                    "type": "git",
+                    "reference":"master"
+                }
+            }
+        }
+    ],
+    "require": {
+        "symfony/console": "6.3.x-dev",
+        "envato/envato-theme-check": "master",
+        "illuminate/support": "10.x-dev",
+        "symfony/finder": "6.3.x-dev",
+        "voku/simple_html_dom": "dev-master"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vagebnd\\EnvatoThemecheckCli\\": "src/"
+        },
+        "files": [
+            "vendor/envato/envato-theme-check/checkbase.php"
+        ],
+        "classmap": [
+            "vendor/envato/envato-theme-check/checks/"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Gianluca Riggio",
+            "email": "luca@maximumawesome.nl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "laravel/pint": "dev-main",
+        "symfony/var-dumper": "6.3.x-dev"
+    },
+    "bin": [
+        "bin/check"
+    ]
+}
