@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../src/shim.php';
+
+$root = dirname(__DIR__);
+
+if (! is_file(sprintf('%s/vendor/autoload.php', $root))) {
+    $root = dirname(__DIR__, 4);
+}
+
+$classLoader = require sprintf('%s/vendor/autoload.php', $root);
+
+use Symfony\Component\Console\Application;
+use Vagebnd\EnvatoThemecheckCli\Commands\RunChecks;
+
+$application = new Application();
+
+$application->add($command = new RunChecks($classLoader));
+$application->setDefaultCommand($command->getName(), true);
+$application->run();
