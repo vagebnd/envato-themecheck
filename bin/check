@@ -12,7 +12,7 @@ if (! is_file(sprintf('%s/vendor/autoload.php', $root))) {
 $classLoader = require sprintf('%s/vendor/autoload.php', $root);
 
 use Symfony\Component\Console\Application;
-use Vagebnd\EnvatoThemecheckCli\Commands\RunChecks;
+use Vagebond\EnvatoThemecheck\Commands\RunChecks;
 
 $application = new Application();
 

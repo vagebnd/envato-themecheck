@@ -1,13 +1,13 @@
 <?php
 
-namespace Vagebnd\EnvatoThemecheckCli\Support;
+namespace Vagebond\EnvatoThemecheck\Support;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 use themecheck;
-use Vagebnd\EnvatoThemecheckCli\Enums\ErrorLevel;
+use Vagebond\EnvatoThemecheck\Enums\ErrorLevel;
 
 class Check
 {
@@ -22,7 +22,7 @@ class Check
 
     public function run(string $source)
     {
-        // Suppress warnings from the theme check.
+        // use @ to Suppress warnings from the theme check.
         @$this->check->check($this->getPhpFiles($source), $this->getCssFiles($source), $this->getOtherFiles($source));
 
         return $this;
@@ -83,9 +83,10 @@ class Check
         // and our own vendor.
         return Finder::create()
             ->files()
+            // ->ignoreDotFiles(false)
             ->notName(['*.zip', '*.svg'])
             ->exclude([
-                'vendor', // For now,
+                // 'vendor', // For now,
                 'envato',
                 'node_modules',
             ])

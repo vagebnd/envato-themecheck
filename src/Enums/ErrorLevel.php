@@ -1,6 +1,6 @@
 <?php
 
-namespace Vagebnd\EnvatoThemecheckCli\Enums;
+namespace Vagebond\EnvatoThemecheck\Enums;
 
 enum ErrorLevel
 {

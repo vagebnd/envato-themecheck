@@ -1,10 +1,10 @@
 <?php
 
-namespace Vagebnd\EnvatoThemecheckCli\Support;
+namespace Vagebond\EnvatoThemecheck\Support;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Vagebnd\EnvatoThemecheckCli\Enums\ErrorLevel;
+use Vagebond\EnvatoThemecheck\Enums\ErrorLevel;
 use voku\helper\HtmlDomParser;
 
 class Error

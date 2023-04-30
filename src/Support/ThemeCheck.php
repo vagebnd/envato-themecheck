@@ -1,6 +1,6 @@
 <?php
 
-namespace Vagebnd\EnvatoThemecheckCli\Support;
+namespace Vagebond\EnvatoThemecheck\Support;
 
 use Composer\Autoload\ClassLoader;
 use Symfony\Component\Finder\Finder;
