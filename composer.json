@@ -16,11 +16,12 @@
         }
     ],
     "require": {
-        "symfony/console": "6.3.x-dev",
+        "php": "^8.1",
+        "symfony/console": "^6.2",
         "envato/envato-theme-check": "master",
-        "illuminate/support": "10.x-dev",
-        "symfony/finder": "6.3.x-dev",
-        "voku/simple_html_dom": "dev-master"
+        "illuminate/support": "^10.9",
+        "symfony/finder": "^6.2",
+        "voku/simple_html_dom": "^4.8"
     },
     "license": "MIT",
     "autoload": {
@@ -40,6 +41,7 @@
             "email": "luca@maximumawesome.nl"
         }
     ],
+    "prefer-stable": true,
     "minimum-stability": "dev",
     "require-dev": {
         "laravel/pint": "dev-main",
