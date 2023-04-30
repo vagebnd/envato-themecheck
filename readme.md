@@ -4,16 +4,16 @@
 
 <p align="center">
     <p align="center">
-        <a href="//packagist.org/packages/vagebond/envato-theme-check"><img alt="Latest Stable Version" src="https://poser.pugx.org/vagebond/envato-theme-check/v"></a>
+        <a href="//packagist.org/packages/vagebond/envato-themecheck"><img alt="Latest Stable Version" src="https://poser.pugx.org/vagebond/envato-themecheck/v"></a>
     </p>
 </p>
 
 ## Instal
 
-This CLI application is the envato-theme-check written in PHP and is installed using [Composer](https://getcomposer.org):
+This CLI application is the envato-themecheck written in PHP and is installed using [Composer](https://getcomposer.org):
 
 ```
-composer global require vagebond/envato-theme-check
+composer global require vagebond/envato-themecheck
 ```
 
 Make sure the `~/.composer/vendor/bin` directory is in your system's `PATH`.
@@ -43,11 +43,11 @@ All you need to do is call the `check ~/path/to/theme` command to start the game
 ## Update
 
 ```
-composer global update vagebond/envato-theme-check
+composer global update vagebond/envato-themecheck
 ```
 
 ## Delete
 
 ```
-composer global remove vagebond/envato-theme-check
+composer global remove vagebond/envato-themecheck
 ```
