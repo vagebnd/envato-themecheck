@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.1",
         "symfony/console": "^6.2",
-        "envato/envato-theme-check": "*@dev",
+        "envato/envato-theme-check": "master@dev",
         "illuminate/support": "^10.9",
         "symfony/finder": "^6.2",
         "voku/simple_html_dom": "^4.8"
