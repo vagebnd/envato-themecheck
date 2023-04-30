@@ -6,7 +6,7 @@
             "type":"package",
             "package": {
                 "name": "envato/envato-theme-check",
-                "version":"1.0.0",
+                "version":"master",
                 "source": {
                     "url": "https://github.com/envato/envato-theme-check",
                     "type": "git",
@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.1",
         "symfony/console": "^6.2",
-        "envato/envato-theme-check": "^1.0",
+        "envato/envato-theme-check": "master",
         "illuminate/support": "^10.9",
         "symfony/finder": "^6.2",
         "voku/simple_html_dom": "^4.8"
