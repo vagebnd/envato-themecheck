@@ -7,10 +7,9 @@
             "package": {
                 "name": "envato/envato-theme-check",
                 "version":"dev-master",
-                "source": {
-                    "url": "https://github.com/envato/envato-theme-check",
-                    "type": "git",
-                    "reference":"master"
+                "dist": {
+                    "url": "https://github.com/envato/envato-theme-check/archive/master.zip",
+                    "type": "zip"
                 }
             }
         }
