@@ -38,7 +38,7 @@ source ~/.bash_profile
 
 ## Use
 
-All you need to do is call the `check ~/path/to/theme` command to start the game:
+All you need to do is call the `check ~/path/to/theme` command to check your theme:
 
 ## Update
 
