@@ -1,2 +1,7 @@
 /vendor/
 composer.lock
+
+# Ignore unused files
+envato-theme-check/LICENSE
+envato-theme-check/readme.md
+envato-theme-check/assets

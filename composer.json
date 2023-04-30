@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.1",
         "symfony/console": "^6.2",
-        "envato/envato-theme-check": "master",
+        "envato/envato-theme-check": "dev-master",
         "illuminate/support": "^10.9",
         "symfony/finder": "^6.2",
         "voku/simple_html_dom": "^4.8"
@@ -26,13 +26,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Vagebnd\\EnvatoThemecheckCli\\": "src/"
+            "Vagebond\\EnvatoThemecheck\\": "src/"
         },
         "files": [
-            "vendor/envato/envato-theme-check/checkbase.php"
+            "envato-theme-check/checkbase.php"
         ],
         "classmap": [
-            "vendor/envato/envato-theme-check/checks/"
+            "envato-theme-check/checks/"
         ]
     },
     "authors": [
@@ -44,10 +44,20 @@
     "prefer-stable": true,
     "minimum-stability": "dev",
     "require-dev": {
-        "laravel/pint": "dev-main",
-        "symfony/var-dumper": "6.3.x-dev"
+        "laravel/pint": "^1.10",
+        "symfony/var-dumper": "^6.2"
     },
     "bin": [
         "bin/check"
-    ]
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "mkdir -p envato-theme-check",
+            "cp -R vendor/envato/envato-theme-check/* envato-theme-check/"
+        ],
+        "post-update-cmd": [
+            "mkdir -p envato-theme-check",
+            "cp -R vendor/envato/envato-theme-check/* envato-theme-check/"
+        ]
+    }
 }
