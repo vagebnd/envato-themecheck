@@ -6,10 +6,11 @@
             "type":"package",
             "package": {
                 "name": "envato/envato-theme-check",
-                "version":"dev-master",
-                "dist": {
-                    "url": "https://github.com/envato/envato-theme-check/archive/master.zip",
-                    "type": "zip"
+                "version":"1.0.0",
+                "source": {
+                    "url": "https://github.com/envato/envato-theme-check",
+                    "type": "git",
+                    "reference":"master"
                 }
             }
         }
@@ -17,7 +18,7 @@
     "require": {
         "php": "^8.1",
         "symfony/console": "^6.2",
-        "envato/envato-theme-check": "dev-master",
+        "envato/envato-theme-check": "^1.0",
         "illuminate/support": "^10.9",
         "symfony/finder": "^6.2",
         "voku/simple_html_dom": "^4.8"
