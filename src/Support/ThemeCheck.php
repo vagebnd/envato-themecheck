@@ -11,12 +11,6 @@ class ThemeCheck
 
     protected string $source;
 
-    protected Finder $phpFiles;
-
-    protected Finder $cssFiles;
-
-    protected Finder $otherFiles;
-
     public static function make(string $source)
     {
         return static::$instance = new static($source);
