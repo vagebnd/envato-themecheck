@@ -21,10 +21,10 @@ class ThemeCheck
         $this->source = $source;
     }
 
-    public function run(ClassLoader $classLoader)
+    public function run(ClassLoader $classLoader, bool $isDev = false)
     {
         $checks = CheckFactory::getAllChecks($classLoader);
 
-        return $checks->map(fn ($check) => $check->run($this->source));
+        return $checks->map(fn ($check) => $check->run($this->source, $isDev));
     }
 }

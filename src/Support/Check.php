@@ -2,16 +2,19 @@
 
 namespace Vagebond\EnvatoThemecheck\Support;
 
+use themecheck;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use themecheck;
 use Vagebond\EnvatoThemecheck\Enums\ErrorLevel;
 
 class Check
 {
     protected themecheck $check;
+
+    protected bool $isDev = false;
 
     public string|null $path = null;
 
@@ -20,8 +23,10 @@ class Check
         $this->check = new $check;
     }
 
-    public function run(string $source)
+    public function run(string $source, bool $isDev = false)
     {
+        $this->isDev = $isDev;
+
         // use @ to Suppress warnings from the theme check.
         @$this->check->check($this->getPhpFiles($source), $this->getCssFiles($source), $this->getOtherFiles($source));
 
@@ -45,7 +50,7 @@ class Check
 
     public function getOutput()
     {
-        return collect(Arr::wrap($this->check->getError()))
+        return Collection::make(Arr::wrap($this->check->getError()))
             ->filter()
             ->map(fn ($error) => Error::parse($error))
             ->unique(fn ($error) => $error->getMessage());
@@ -79,17 +84,47 @@ class Check
 
     private function makeFinder(string $source)
     {
-        // We need to ignore the envato theme check itself.
-        // and our own vendor.
-        return Finder::create()
-            ->files()
-            // ->ignoreDotFiles(false)
-            ->notName(['*.zip', '*.svg'])
-            ->exclude([
-                // 'vendor', // For now,
-                'envato',
-                'node_modules',
-            ])
-            ->in($source);
+        $excludes = Collection::make([
+            'node_modules',
+            'wordpress-stubs'
+        ]);
+
+        // Exclude dev dependencies from the theme check when in development mode.
+        if ($this->isDev) {
+            $excludes = $excludes->merge($this->getDevDependencies($source));
+        }
+
+        $finder = Finder::create()
+            ->in($source)
+            ->exclude($excludes->toArray())
+            ->notName(['*.zip', '*.svg', 'XdebugHandler.php'])
+            ->files();
+
+        if ($this->isDev) {
+            $finder
+                ->notName(['wordpress-stubs'])
+                ->ignoreDotFiles(true);
+        }
+
+        return $finder;
+    }
+
+    private function getDevDependencies(string $source)
+    {
+        // Get all the dev dependencies from all composer.json files
+        $finder = Finder::create()
+            ->in($source)
+            ->followLinks()
+            ->name('composer.json')
+            ->files();
+
+        return Collection::make(iterator_to_array($finder))
+            ->map(fn (SplFileInfo $file) => json_decode($file->getContents(), true)['require-dev'])
+            ->filter()
+            ->map(fn (array $composerJson) => array_keys($composerJson))
+            ->values()
+            ->flatten()
+            ->unique()
+            ->filter(fn ($value) => Str::contains($value, '/'));
     }
 }

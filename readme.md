@@ -40,6 +40,14 @@ source ~/.bash_profile
 
 All you need to do is call the `check ~/path/to/theme` command to check your theme:
 
+## Dev mode
+
+When you're working in dev mode you probably want to ignore all devDependencies from your vendor folder. You can do this by adding the `--dev` flag to the command:
+
+```
+check ~/path/to/theme --dev
+```
+
 ## Update
 
 ```

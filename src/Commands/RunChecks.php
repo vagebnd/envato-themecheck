@@ -6,6 +6,7 @@ use Composer\Autoload\ClassLoader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Vagebond\EnvatoThemecheck\Support\ThemeCheck;
@@ -29,6 +30,12 @@ class RunChecks extends Command
     protected function configure(): void
     {
         $this->addArgument('source', InputArgument::OPTIONAL, 'The input file or directory to check.');
+        $this->addOption(
+            'dev',
+            'd',
+            InputOption::VALUE_NONE,
+            'Run the checks in development mode and ignore development folders (like dotfiles).',
+        );
     }
 
     /**
@@ -39,8 +46,9 @@ class RunChecks extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $source = $input->getArgument('source') ?? getcwd();
+        $isDev = $input->getOption('dev') ?? false;
 
-        $results = ThemeCheck::make($source)->run($this->classLoader);
+        $results = ThemeCheck::make($source)->run($this->classLoader, $isDev);
         $io = new SymfonyStyle($input, $output);
 
         $results
